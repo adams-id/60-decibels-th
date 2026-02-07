@@ -1,6 +1,10 @@
-import { redirect } from "next/navigation"
+import HomeLanding from "@/components/HomeLanding"
 
 export default function Home() {
-  redirect("/upload")
+  return (
+    <main>
+      <HomeLanding />
+    </main>
+  )
 }
 

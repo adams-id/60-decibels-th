@@ -1,0 +1,366 @@
+.card {
+  border: 1px solid #e5e7eb;
+  border-radius: 1rem;
+  background: #fff;
+  box-shadow: 0 1px 0 rgba(17, 17, 17, 0.03), 0 12px 28px rgba(17, 17, 17, 0.08);
+  overflow: hidden;
+}
+
+.stepsHeader {
+  padding: 20px 24px;
+  border-bottom: 1px solid #e5e7eb;
+  background: #f9fafb;
+}
+
+.stepsRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.stepGroup {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.stepGroupTight {
+  flex: 0 0 auto;
+}
+
+.stepIndicator {
+  height: 40px;
+  width: 40px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.875rem;
+  background: #e5e7eb;
+  color: #4b5563;
+  transition: all 0.2s ease;
+  flex: 0 0 auto;
+}
+
+.stepIndicatorActive {
+  background: #111827;
+  color: #fff;
+}
+
+.stepIndicatorCompleted {
+  background: #16a34a;
+  color: #fff;
+}
+
+.stepText {
+  min-width: 0;
+}
+
+.stepTitle {
+  font-weight: 700;
+  font-size: 0.875rem;
+  color: #4b5563;
+  line-height: 1.15;
+}
+
+.stepTitleActive {
+  color: #111827;
+}
+
+.stepTitleCompleted {
+  color: #166534;
+}
+
+.stepSub {
+  font-size: 0.75rem;
+  color: #6b7280;
+  line-height: 1.2;
+  margin-top: 2px;
+}
+
+.stepConnector {
+  height: 2px;
+  background: #e5e7eb;
+  flex: 1 1 0;
+  border-radius: 999px;
+  margin: 0 12px;
+  transition: background 0.2s ease;
+}
+
+.stepConnectorCompleted {
+  background: #16a34a;
+}
+
+.body {
+  padding: 24px;
+}
+
+.sectionTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 6px;
+}
+
+.sectionSubtitle {
+  font-size: 0.875rem;
+  color: #4b5563;
+  margin: 0;
+}
+
+.uploadZone {
+  border: 2px dashed hsl(214 32% 91%);
+  border-radius: 0.75rem;
+  padding: 48px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  background: #fff;
+}
+
+.uploadZone:hover {
+  border-color: #111827;
+  background: hsl(210 40% 99%);
+}
+
+.uploadZoneDragover {
+  border-color: hsl(221 83% 53%);
+  background: hsl(221 100% 97%);
+  transform: scale(1.02);
+}
+
+.uploadIconWrap {
+  height: 64px;
+  width: 64px;
+  border-radius: 999px;
+  background: #f3f4f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+}
+
+.primaryBtn {
+  padding: 10px 16px;
+  background: #111827;
+  color: #fff;
+  border-radius: 0.5rem;
+  border: 1px solid #111827;
+  font-weight: 600;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: background 0.15s ease, box-shadow 0.15s ease;
+}
+
+.primaryBtn:hover {
+  background: #1f2937;
+}
+
+.primaryBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.secondaryBtn {
+  padding: 10px 16px;
+  background: #fff;
+  color: #374151;
+  border-radius: 0.5rem;
+  border: 1px solid #d1d5db;
+  font-weight: 600;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.secondaryBtn:hover {
+  background: #f9fafb;
+}
+
+.secondaryBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.fileSelectedCard {
+  margin-top: 16px;
+  border-radius: 0.75rem;
+  border: 1px solid #bfdbfe;
+  background: linear-gradient(90deg, #eff6ff, #eef2ff);
+  padding: 20px;
+}
+
+.fileRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.fileIcon {
+  height: 48px;
+  width: 48px;
+  border-radius: 0.5rem;
+  background: #dbeafe;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+}
+
+.fileMeta {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.fileName {
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.fileSize {
+  font-size: 0.875rem;
+  color: #4b5563;
+  margin: 2px 0 0;
+}
+
+.iconBtn {
+  border: none;
+  background: transparent;
+  padding: 6px;
+  border-radius: 10px;
+  cursor: pointer;
+  color: #6b7280;
+}
+
+.iconBtn:hover {
+  background: rgba(17, 17, 17, 0.06);
+  color: #374151;
+}
+
+.progressTopRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.progressLabel {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+.progressPct {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #2563eb;
+}
+
+.progressTrack {
+  height: 8px;
+  background: #e5e7eb;
+  border-radius: 999px;
+  overflow: hidden;
+  margin-top: 6px;
+}
+
+.progressBar {
+  height: 100%;
+  background: linear-gradient(90deg, #3b82f6, #4f46e5);
+  border-radius: 999px;
+  transition: width 0.25s ease;
+}
+
+.hint {
+  font-size: 0.75rem;
+  color: #6b7280;
+  margin: 8px 0 0;
+}
+
+.actionsRow {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+
+.flex1 {
+  flex: 1 1 240px;
+}
+
+.infoBox {
+  margin-top: 24px;
+  border-radius: 0.75rem;
+  border: 1px solid #bfdbfe;
+  background: #eff6ff;
+  padding: 16px;
+}
+
+.infoRow {
+  display: flex;
+  gap: 12px;
+}
+
+.successCard {
+  margin-top: 16px;
+  border-radius: 1rem;
+  border: 1px solid #bbf7d0;
+  background: linear-gradient(90deg, #ecfdf5, #ecfeff);
+  padding: 28px;
+  text-align: center;
+}
+
+.successIcon {
+  height: 64px;
+  width: 64px;
+  border-radius: 999px;
+  background: #dcfce7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 14px;
+}
+
+.successTitle {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #111827;
+  margin: 0 0 6px;
+}
+
+.successSub {
+  color: #4b5563;
+  margin: 0 0 18px;
+  font-size: 0.95rem;
+}
+
+.successBtn {
+  padding: 12px 18px;
+  background: #16a34a;
+  color: #fff;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(22, 163, 74, 0.35);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.successBtn:hover {
+  background: #15803d;
+}
+
+.successActions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+

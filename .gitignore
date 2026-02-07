@@ -1,7 +1,10 @@
 # dependencies
 /node_modules
 /.pnp
-.pnp.js
+.pnp.
+
+# data
+/.data
 
 # testing
 /coverage
