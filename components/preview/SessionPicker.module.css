@@ -1,0 +1,126 @@
+.card {
+  border: 1px solid #e5e5e5;
+  border-radius: 14px;
+  padding: 12px;
+  background: #fff;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.title {
+  font-weight: 800;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.chevronBtn {
+  width: 30px;
+  height: 30px;
+  border-radius: 10px;
+  border: 1px solid #e5e5e5;
+  background: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #444;
+  flex: 0 0 auto;
+}
+
+.chevron {
+  display: inline-block;
+  transition: transform 150ms ease;
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+.refreshBtn {
+  padding: 6px 10px;
+  border-radius: 10px;
+  font-size: 12px;
+  border: 1px solid #e5e5e5;
+  background: #fff;
+  cursor: pointer;
+}
+
+.subtext {
+  margin-top: 6px;
+  font-size: 12px;
+  color: #666;
+  line-height: 1.4;
+}
+
+.error {
+  margin-top: 8px;
+  font-size: 12px;
+  color: #b00020;
+}
+
+.list {
+  margin-top: 10px;
+  display: grid;
+  gap: 8px;
+}
+
+.itemBtn {
+  text-align: left;
+  padding: 10px;
+  border-radius: 12px;
+  border: 1px solid #eee;
+  background: #fff;
+  cursor: pointer;
+}
+
+.itemBtnActive {
+  border-color: rgba(11, 94, 215, 0.30);
+  background: rgba(11, 94, 215, 0.06);
+}
+
+.itemTop {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: baseline;
+}
+
+.itemTitle {
+  font-weight: 750;
+  font-size: 13px;
+}
+
+.itemMeta {
+  font-size: 11px;
+  color: #666;
+}
+
+.itemBottom {
+  margin-top: 4px;
+  font-size: 12px;
+  color: #666;
+}
+
+.assembled {
+  color: #146c43;
+}
+
+.hint {
+  font-size: 12px;
+  color: #666;
+}
+

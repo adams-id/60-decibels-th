@@ -1,0 +1,221 @@
+.container {
+  display: grid;
+  gap: 14px;
+}
+
+.card {
+  border: 1px solid #e5e5e5;
+  border-radius: 14px;
+  padding: 14px;
+  background: #fff;
+}
+
+.headerRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: baseline;
+}
+
+.title {
+  font-weight: 750;
+}
+
+.mono {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.muted {
+  color: #666;
+}
+
+.chips {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  font-size: 13px;
+  color: #444;
+}
+
+.chip {
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #f3f3f3;
+}
+
+.issuesList {
+  margin-top: 10px;
+  display: grid;
+  gap: 6px;
+}
+
+.issue {
+  font-size: 12px;
+  border-radius: 10px;
+  padding: 8px 10px;
+  border: 1px solid transparent;
+}
+
+.issueTitle {
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  font-weight: 800;
+}
+
+.issueInfo {
+  color: #0b5ed7;
+  background: #0b5ed712;
+  border-color: #0b5ed728;
+}
+
+.issueWarning {
+  color: #7a5d00;
+  background: #ffcc0015;
+  border-color: #ffcc0030;
+}
+
+.issueError {
+  color: #b00020;
+  background: #b0002012;
+  border-color: #b0002028;
+}
+
+.twoCol {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 14px;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .twoCol {
+    grid-template-columns: 1fr;
+  }
+}
+
+.input {
+  width: 93%;
+  padding: 8px 10px;
+  border-radius: 10px;
+  border: 1px solid #e5e5e5;
+}
+
+.btnRow {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 6px 10px;
+  border-radius: 10px;
+  font-size: 12px;
+  border: 1px solid #e5e5e5;
+  background: #fff;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: #f9fafb;
+}
+
+.selectedCount {
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 6px;
+}
+
+.colList {
+  max-height: 520px;
+  overflow: auto;
+  border: 1px solid #eee;
+  border-radius: 12px;
+}
+
+.colItem {
+  display: grid;
+  grid-template-columns: 20px 1fr;
+  gap: 8px;
+  padding: 8px 10px;
+  border-bottom: 1px solid #f3f3f3;
+  cursor: pointer;
+  background: #fff;
+}
+
+.colItemSelected {
+  background: #0b5ed708;
+}
+
+.colNameRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.colName {
+  font-size: 12px;
+  color: #111;
+  font-weight: 650;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.colType {
+  font-size: 11px;
+  color: #666;
+  white-space: nowrap;
+}
+
+.colMeta {
+  margin-top: 2px;
+  font-size: 11px;
+  color: #666;
+}
+
+.tableWrap {
+  overflow-x: auto;
+  border-radius: 12px;
+  border: 1px solid #eee;
+}
+
+.table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 12px;
+}
+
+.th {
+  position: sticky;
+  top: 0;
+  text-align: left;
+  padding: 8px;
+  border-bottom: 1px solid #eee;
+  background: #fafafa;
+  white-space: nowrap;
+  z-index: 1;
+}
+
+.thInner {
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+}
+
+.td {
+  padding: 8px;
+  border-bottom: 1px solid #f3f3f3;
+  white-space: nowrap;
+  max-width: 260px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.rowEven {
+  background: #fff;
+}
+
+.rowOdd {
+  background: #fcfcfc;
+}

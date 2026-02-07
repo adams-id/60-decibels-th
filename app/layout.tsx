@@ -1,7 +1,8 @@
-import ToasterClient from "@/components/ToasterClient";
+import ToasterClient from "@/components/layout/ToasterClient";
 import Link from "next/link";
 import { Inter } from "next/font/google";
-import TopNav from "@/components/TopNav";
+import TopNav from "@/components/layout/TopNav";
+import styles from "./layout.module.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,40 +18,16 @@ export default function RootLayout({
         style={{
           margin: 0,
           minHeight: "100vh",
-          background: "linear-gradient(180deg, #fffff0 240px)",
+          background: "#FFFFF0",
         }}
       >
-        <div style={{ maxWidth: 1100, margin: "0 auto", padding: 24 }}>
-          <header
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-              gap: 12,
-              marginBottom: 18,
-              paddingBottom: 12,
-              borderBottom: "1px solid #ededed",
-            }}
-          >
-            <div
-              style={{
-                display: "flex",
-                alignItems: "baseline",
-                gap: 12,
-                flexWrap: "wrap",
-              }}
-            >
-              <Link
-                href="/"
-                style={{
-                  fontWeight: 800,
-                  color: "#111",
-                  textDecoration: "none",
-                }}
-              >
+        <div className={styles.wrapper}>
+          <header className={styles.header}>
+            <div className={styles.brandRow}>
+              <Link href="/" className={styles.brandLink}>
                 Large Upload Take-home
               </Link>
-              <div style={{ color: "#666", fontSize: 13 }}>
+              <div className={styles.brandSub}>
                 Chunked uploads + data preview
               </div>
             </div>

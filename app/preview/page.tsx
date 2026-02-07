@@ -1,5 +1,5 @@
-import DataPreviewTable from "@/components/DataPreviewTable"
-import SessionPicker from "@/components/SessionPicker"
+import DataPreviewTable from "@/components/preview/DataPreviewTable"
+import SessionPicker from "@/components/preview/SessionPicker"
 import { Suspense } from "react"
 
 export default function PreviewPage() {

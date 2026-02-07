@@ -1,0 +1,33 @@
+.wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 18px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #ededed;
+}
+
+.brandRow {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.brandLink {
+  font-weight: 800;
+  color: #111;
+  text-decoration: none;
+}
+
+.brandSub {
+  color: #666;
+  font-size: 13px;
+}

@@ -1,0 +1,220 @@
+.container {
+  display: grid;
+  gap: 14px;
+}
+
+.hero {
+  border: 1px solid #e8e8e8;
+  border-radius: 18px;
+  padding: 18px;
+  background: linear-gradient(180deg, #ffffff, #f8fafc);
+  box-shadow: 0 1px 0 rgba(17, 17, 17, 0.03), 0 10px 30px rgba(17, 17, 17, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  right: -90px;
+  top: -120px;
+  width: 260px;
+  height: 260px;
+  border-radius: 999px;
+  background: radial-gradient(circle at 30% 30%, rgba(11, 94, 215, 0.20), rgba(11, 94, 215, 0) 70%);
+  pointer-events: none;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  left: -110px;
+  bottom: -140px;
+  width: 300px;
+  height: 300px;
+  border-radius: 999px;
+  background: radial-gradient(circle at 40% 40%, rgba(20, 108, 67, 0.16), rgba(20, 108, 67, 0) 72%);
+  pointer-events: none;
+}
+
+.heroInner {
+  position: relative;
+}
+
+.pillRow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.pill {
+  font-size: 12px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  font-weight: 750;
+  letter-spacing: 0.2px;
+  border: 1px solid transparent;
+}
+
+.pillBlue {
+  color: #0b5ed7;
+  background: rgba(11, 94, 215, 0.10);
+  border-color: rgba(11, 94, 215, 0.18);
+}
+
+.pillGreen {
+  color: #146c43;
+  background: rgba(20, 108, 67, 0.10);
+  border-color: rgba(20, 108, 67, 0.18);
+}
+
+.headline {
+  margin-top: 10px;
+  font-size: 28px;
+  font-weight: 900;
+  letter-spacing: -0.6px;
+  color: #111;
+}
+
+.subhead {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #5b5b5b;
+  max-width: 820px;
+  line-height: 1.55;
+}
+
+.ctaRow {
+  margin-top: 14px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.primaryCta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 14px;
+  background: linear-gradient(180deg, #0b5ed7, #084db1);
+  color: #fff;
+  border: 1px solid rgba(11, 94, 215, 0.35);
+  text-decoration: none;
+  font-weight: 800;
+  font-size: 13px;
+  box-shadow: 0 8px 18px rgba(11, 94, 215, 0.18);
+}
+
+.secondaryCta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 14px;
+  background: #fff;
+  color: #111;
+  border: 1px solid #e5e5e5;
+  text-decoration: none;
+  font-weight: 750;
+  font-size: 13px;
+}
+
+.iconBubble {
+  width: 26px;
+  height: 26px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+
+.iconBubblePrimary {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.iconBubbleSecondary {
+  background: #f3f3f3;
+  color: #444;
+  font-size: 13px;
+}
+
+.note {
+  margin-top: 14px;
+  font-size: 12px;
+  color: #666;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  padding-top: 12px;
+}
+
+.mono {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.sectionTitle {
+  font-weight: 850;
+  letter-spacing: -0.2px;
+  color: #111;
+}
+
+.stepsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 12px;
+}
+
+.stepCard {
+  border: 1px solid #e8e8e8;
+  border-radius: 18px;
+  padding: 16px;
+  background: #fff;
+  box-shadow: 0 1px 0 rgba(17, 17, 17, 0.03), 0 10px 30px rgba(17, 17, 17, 0.05);
+}
+
+.stepHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.stepIcon {
+  width: 34px;
+  height: 34px;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+}
+
+.stepIconBlue {
+  background: rgba(11, 94, 215, 0.10);
+  border: 1px solid rgba(11, 94, 215, 0.18);
+  color: #0b5ed7;
+}
+
+.stepIconPurple {
+  background: rgba(90, 44, 160, 0.10);
+  border: 1px solid rgba(90, 44, 160, 0.20);
+  color: #5a2ca0;
+}
+
+.stepIconGreen {
+  background: rgba(20, 108, 67, 0.10);
+  border: 1px solid rgba(20, 108, 67, 0.18);
+  color: #146c43;
+}
+
+.stepTitle {
+  font-weight: 850;
+}
+
+.stepBody {
+  font-size: 13px;
+  color: #5b5b5b;
+  line-height: 1.5;
+}
+

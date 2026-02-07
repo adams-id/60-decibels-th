@@ -13,7 +13,7 @@
   - file-selected state shows a compact file card + progress + action buttons
   - “Go to preview” / “Open preview” only appear after a true success (after finalize)
   - “Upload another file” resets back to file selection (does not re-upload the prior file)
-  - styling moved to a small CSS module (`UploadWizard.module.css`) while keeping the app dependency-light
+  - styling moved to a CSS module while keeping the app dependency-light
 
 ### Client-side robustness
 

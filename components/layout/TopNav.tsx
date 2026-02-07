@@ -2,24 +2,14 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+import styles from "./TopNav.module.css"
 
 function NavLink({ href, label }: { href: string; label: string }) {
   const pathname = usePathname()
   const isActive = pathname === href || (href !== "/" && pathname?.startsWith(href))
 
   return (
-    <Link
-      href={href}
-      style={{
-        textDecoration: "none",
-        color: isActive ? "#111" : "#555",
-        fontSize: 13,
-        fontWeight: isActive ? 750 : 650,
-        padding: "6px 2px",
-        borderBottom: isActive ? "2px solid #111" : "2px solid transparent",
-        lineHeight: 1.1,
-      }}
-    >
+    <Link href={href} className={`${styles.link} ${isActive ? styles.active : ""}`}>
       {label}
     </Link>
   )
@@ -27,7 +17,7 @@ function NavLink({ href, label }: { href: string; label: string }) {
 
 export default function TopNav() {
   return (
-    <nav style={{ display: "flex", gap: 18, alignItems: "center", flexWrap: "wrap" }}>
+    <nav className={styles.nav}>
       <NavLink href="/upload" label="Upload" />
       <NavLink href="/preview" label="Preview" />
     </nav>

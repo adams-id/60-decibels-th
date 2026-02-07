@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation"
 import { useEffect, useMemo, useRef, useState } from "react"
 import { useChunkedUpload } from "@/hooks/useChunkedUpload"
 import toast from "react-hot-toast"
-import styles from "@/components/UploadWizard.module.css"
+import styles from "./UploadWizard.module.css"
 
 function formatBytes(n: number) {
   const units = ["B", "KB", "MB", "GB"]
@@ -22,12 +22,11 @@ function percent(n: number) {
 }
 
 function phaseColor(phase: string) {
-  // Keep colors calm and accessible (no neon).
-  if (phase === "done") return "#146c43" // green
+  if (phase === "done") return "#16a34a" // green
   if (phase === "error") return "#b00020" // red
   if (phase === "canceled") return "#6c757d" // gray
   if (phase === "finalizing") return "#5a2ca0" // purple
-  if (phase === "uploading" || phase === "initializing" || phase === "validating") return "#0b5ed7" // blue
+  if (phase === "uploading" || phase === "initializing" || phase === "validating") return "#2563eb" // blue
   return "#111"
 }
 
@@ -103,9 +102,7 @@ function Stepper({ phase }: { phase: string }) {
 }
 
 function InfoBox({ children }: { children: React.ReactNode }) {
-  return (
-    <div className={styles.infoBox}>{children}</div>
-  )
+  return <div className={styles.infoBox}>{children}</div>
 }
 
 export default function UploadWizard() {
@@ -140,21 +137,13 @@ export default function UploadWizard() {
   const isDone = status === "done"
   const hasFile = !!file
 
-  const stepPhase =
-    status === "error" || status === "canceled" ? lastNonTerminalPhaseRef.current : status
-
-  const fileInfo = useMemo(() => {
-    if (!file) return null
-    return `${file.name} • ${formatBytes(file.size)}`
-  }, [file])
+  const stepPhase = status === "error" || status === "canceled" ? lastNonTerminalPhaseRef.current : status
 
   const chunkSummary = useMemo(() => {
     if (!chunks || chunks.length === 0) return null
     const uploaded = chunks.filter((c) => c === "uploaded").length
     const failed = chunks.filter((c) => c === "failed").length
-    const uploading = chunks.filter((c) => c === "uploading").length
-    const remaining = chunks.length - uploaded - uploading
-    return { uploaded, failed, uploading, remaining, total: chunks.length }
+    return { uploaded, failed, total: chunks.length }
   }, [chunks])
 
   const failedChunkCount = chunkSummary?.failed ?? 0
@@ -175,7 +164,11 @@ export default function UploadWizard() {
     if (status === "idle") toast.dismiss("upload")
   }, [status])
 
-  // If the user selects a new file, we reset the previous session state (reduces confusion).
+  useEffect(() => {
+    if (status === "error" || status === "canceled") return
+    lastNonTerminalPhaseRef.current = status
+  }, [status])
+
   const onPickFile = (f: File | null) => {
     setFile(f)
     if (f && (status === "done" || status === "error" || status === "canceled" || status === "idle")) {
@@ -197,12 +190,6 @@ export default function UploadWizard() {
   }, [status])
 
   const progressColor = phaseColor(status)
-
-  useEffect(() => {
-    // Keep the last meaningful phase for the stepper when we transition to error/canceled.
-    if (status === "error" || status === "canceled") return
-    lastNonTerminalPhaseRef.current = status
-  }, [status])
 
   const clearFileAndReset = () => {
     reset()
@@ -235,13 +222,9 @@ export default function UploadWizard() {
             style={{ display: "none" }}
           />
 
-          {/* Dropzone (only when no file selected and not already done) */}
           {!hasFile && !isDone ? (
             <div
-              className={[
-                styles.uploadZone,
-                dragOver ? styles.uploadZoneDragover : "",
-              ].filter(Boolean).join(" ")}
+              className={[styles.uploadZone, dragOver ? styles.uploadZoneDragover : ""].filter(Boolean).join(" ")}
               onClick={() => fileInputRef.current?.click()}
               onDragOver={(e) => {
                 if (isBusy) return
@@ -289,7 +272,6 @@ export default function UploadWizard() {
             </div>
           ) : null}
 
-          {/* File selected state */}
           {hasFile && !isDone ? (
             <div className={styles.fileSelectedCard}>
               <div className={styles.fileRow}>
@@ -313,10 +295,7 @@ export default function UploadWizard() {
                     <button
                       type="button"
                       className={styles.iconBtn}
-                      onClick={() => {
-                        // Remove file selection and return to dropzone.
-                        clearFileAndReset()
-                      }}
+                      onClick={() => clearFileAndReset()}
                       title="Remove file"
                       aria-label="Remove file"
                       disabled={isBusy}
@@ -338,7 +317,6 @@ export default function UploadWizard() {
                     Upload completes only after “Finalize” succeeds. Progress is measured by bytes sent.
                   </p>
 
-                  {/* Compact status line */}
                   {status !== "idle" ? (
                     <p className={styles.hint} style={{ marginTop: 8 }}>
                       <b style={{ color: progressColor }}>{status.toUpperCase()}</b> — {stageDescription}
@@ -349,6 +327,25 @@ export default function UploadWizard() {
                       ) : null}
                     </p>
                   ) : null}
+
+                  <p className={styles.hint} style={{ marginTop: 8 }}>
+                    {totalBytes > 0 ? (
+                      <span>
+                        {formatBytes(uploadedBytes)} / {formatBytes(totalBytes)}
+                      </span>
+                    ) : null}
+                    {chunkSummary ? (
+                      <span style={{ marginLeft: 10 }}>
+                        parts {chunkSummary.uploaded}/{chunkSummary.total}
+                        {failedChunkCount > 0 ? <span style={{ color: "#b00020" }}> • failed {failedChunkCount}</span> : null}
+                      </span>
+                    ) : null}
+                    {status === "uploading" && totalChunks != null && chunkIndex != null ? (
+                      <span style={{ marginLeft: 10 }}>
+                        (part {chunkIndex + 1} of {totalChunks})
+                      </span>
+                    ) : null}
+                  </p>
                 </div>
               </div>
 
@@ -374,11 +371,7 @@ export default function UploadWizard() {
                 </button>
 
                 {canResume ? (
-                  <button
-                    type="button"
-                    className={styles.secondaryBtn}
-                    onClick={() => resume()}
-                  >
+                  <button type="button" className={styles.secondaryBtn} onClick={() => resume()}>
                     Resume Missing Parts
                   </button>
                 ) : null}
@@ -392,11 +385,7 @@ export default function UploadWizard() {
                   Cancel
                 </button>
 
-                <button
-                  type="button"
-                  className={styles.secondaryBtn}
-                  onClick={() => clearFileAndReset()}
-                >
+                <button type="button" className={styles.secondaryBtn} onClick={() => clearFileAndReset()}>
                   Reset
                 </button>
               </div>
@@ -444,7 +433,6 @@ export default function UploadWizard() {
         </div>
       </div>
 
-      {/* Success State (separate panel like the guide) */}
       {isDone && showGoToPreview ? (
         <div className={styles.successCard}>
           <div className={styles.successIcon} aria-hidden>
