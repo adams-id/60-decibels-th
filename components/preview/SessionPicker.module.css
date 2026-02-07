@@ -92,6 +92,15 @@
   background: rgba(11, 94, 215, 0.06);
 }
 
+.itemBtnDisabled {
+  cursor: not-allowed;
+  opacity: 0.78;
+}
+
+.itemBtnDisabled:hover {
+  background: #fff;
+}
+
 .itemTop {
   display: flex;
   justify-content: space-between;
@@ -117,6 +126,10 @@
 
 .assembled {
   color: #146c43;
+}
+
+.incomplete {
+  color: #b00020;
 }
 
 .hint {

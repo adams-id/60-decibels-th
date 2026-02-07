@@ -115,22 +115,34 @@ export default function SessionPicker() {
             <div className={styles.subtext}>No uploads found yet.</div>
           ) : (
             <div className={styles.list}>
-              {items.slice(0, 20).map((s) => {
+              {items.slice(0, 10).map((s) => {
                 const isActive = current === s.sessionId
                 const status = s.hasAssembled ? "ready" : "incomplete"
+                const isDisabled = !s.hasAssembled
                 return (
                   <button
                     key={s.sessionId}
+                    disabled={isDisabled}
                     onClick={() => {
+                      if (isDisabled) return
                       router.push(`/preview?sessionId=${encodeURIComponent(s.sessionId)}`)
                       setIsOpen(false)
                     }}
-                    className={`${styles.itemBtn} ${isActive ? styles.itemBtnActive : ""}`}
+                    className={[
+                      styles.itemBtn,
+                      isActive ? styles.itemBtnActive : "",
+                      isDisabled ? styles.itemBtnDisabled : "",
+                    ]
+                      .filter(Boolean)
+                      .join(" ")}
+                    title={isDisabled ? "Upload is incomplete — preview not available yet." : "Load preview"}
                   >
                     <div className={styles.itemTop}>
                       <div className={styles.itemTitle}>
                         {shortId(s.sessionId)}{" "}
-                        <span className={styles.itemMeta}>({status})</span>
+                        <span className={`${styles.itemMeta} ${isDisabled ? styles.incomplete : ""}`}>
+                          ({status})
+                        </span>
                       </div>
                       <div className={styles.itemMeta}>{formatWhen(s.updatedAtMs)}</div>
                     </div>
@@ -139,14 +151,14 @@ export default function SessionPicker() {
                       {s.hasAssembled ? (
                         <span className={styles.assembled}> • assembled</span>
                       ) : (
-                        <span> • not assembled</span>
+                        <span className={styles.incomplete}> • not assembled</span>
                       )}
                     </div>
                   </button>
                 )
               })}
-              {items.length > 20 ? (
-                <div className={styles.hint}>Showing latest 20 sessions.</div>
+              {items.length > 10 ? (
+                <div className={styles.hint}>Showing latest 10 sessions.</div>
               ) : null}
             </div>
           )}
