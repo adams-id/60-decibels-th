@@ -1,5 +1,14 @@
 ## What I changed and why
 
+### Codebase structure
+
+- **Component folders by feature**: reorganized `components/` to group UI + styles together by feature:
+  - `components/upload/` (upload flow UI)
+  - `components/preview/` (preview UI + session picker)
+  - `components/home/` (landing page)
+  - `components/layout/` (nav + toaster)
+- **CSS modules**: moved most component styling from inline `style={{...}}` blocks into colocated `*.module.css` files to keep UI code easier to read and the design easier to evolve.
+
 ### Upload UX
 
 - **Explicit phases**: modeled the flow as clear phases (Select → Validate → Init → Upload → Finalize → Ready) so users always know where they are.
@@ -43,6 +52,15 @@
 - **Header navigation**: added lightweight nav links (Upload/Preview) so users always know where to go.
 - **Preview robustness**: Preview now reads `sessionId` via App Router search params (with a safe fallback to `localStorage.lastSessionId`) and uses a `Suspense` boundary.
 - **Typography**: use the Inter font via `next/font` for a cleaner, consistent UI.
+
+### Tests
+
+- **Test harness**: added `vitest` + Testing Library (`@testing-library/react`, `@testing-library/user-event`, `@testing-library/jest-dom`) with a minimal `vitest.config.ts` + `tests/setup.ts`.
+- **High-signal coverage** (kept intentionally small for timebox):
+  - `tests/csv.test.ts`: CSV preview parsing (duplicate headers, row length mismatch issue, type inference).
+  - `tests/UploadWizard.test.tsx`: critical UX behavior for “Start Upload” disabled states (canceled, uploading).
+  - `tests/SessionPicker.test.tsx`: incomplete sessions are disabled; complete sessions remain selectable.
+- **Scripts**: added `npm test` and `npm run test:watch`.
 
 ## What I intentionally did not do
 
