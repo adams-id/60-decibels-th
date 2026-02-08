@@ -25,11 +25,8 @@ export default function RootLayout({
           <header className={styles.header}>
             <div className={styles.brandRow}>
               <Link href="/" className={styles.brandLink}>
-                Large Upload Take-home
+                Home
               </Link>
-              <div className={styles.brandSub}>
-                Chunked uploads + data preview
-              </div>
             </div>
 
             <TopNav />

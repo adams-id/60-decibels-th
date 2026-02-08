@@ -57,6 +57,11 @@
   color: #fff;
 }
 
+.stepIndicatorError {
+  background: #dc2626;
+  color: #fff;
+}
+
 .stepText {
   min-width: 0;
 }
@@ -74,6 +79,10 @@
 
 .stepTitleCompleted {
   color: #166534;
+}
+
+.stepTitleError {
+  color: #b00020;
 }
 
 .stepSub {

@@ -361,7 +361,7 @@ export function useChunkedUpload() {
         setError(e?.message ?? "Upload failed");
         if (!errorHint) {
           setErrorHint(
-            "Try again. If it keeps failing, re-select the file and restart the upload.",
+            "Try again. If it keeps failing, re-select the file or restart the upload.",
           );
         }
       }
